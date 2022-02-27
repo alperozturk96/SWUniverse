@@ -39,6 +39,8 @@
 		92831DC627B7E7C200BA27E1 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92831DC527B7E7C200BA27E1 /* ArrayExtensions.swift */; };
 		92CBF06727CBEE2E0010973E /* CharacterPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF06627CBEE2E0010973E /* CharacterPropertiesView.swift */; };
 		92CBF06C27CBF7E70010973E /* CharacterStarshipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF06B27CBF7E70010973E /* CharacterStarshipView.swift */; };
+		92CBF06E27CC05AE0010973E /* CharacterListSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF06D27CC05AE0010973E /* CharacterListSearchView.swift */; };
+		92CBF07027CC09540010973E /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CBF06F27CC09540010973E /* CharactersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		92831DC527B7E7C200BA27E1 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		92CBF06627CBEE2E0010973E /* CharacterPropertiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPropertiesView.swift; sourceTree = "<group>"; };
 		92CBF06B27CBF7E70010973E /* CharacterStarshipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStarshipView.swift; sourceTree = "<group>"; };
+		92CBF06D27CC05AE0010973E /* CharacterListSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListSearchView.swift; sourceTree = "<group>"; };
+		92CBF06F27CC09540010973E /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,8 @@
 			children = (
 				923D782727B785F500258518 /* CharacterListView.swift */,
 				923D785527B786BD00258518 /* CharacterListContentView.swift */,
+				92CBF06D27CC05AE0010973E /* CharacterListSearchView.swift */,
+				92CBF06F27CC09540010973E /* CharactersView.swift */,
 			);
 			path = CharacterList;
 			sourceTree = "<group>";
@@ -493,11 +499,13 @@
 				923D785627B786BD00258518 /* CharacterListContentView.swift in Sources */,
 				923D787427B78C2400258518 /* CharacterListViewModel.swift in Sources */,
 				923D787627B78C3000258518 /* CharacterListDataSource.swift in Sources */,
+				92CBF07027CC09540010973E /* CharactersView.swift in Sources */,
 				923D787D27B7B15000258518 /* CharacterDetailViewModel.swift in Sources */,
 				923D782827B785F500258518 /* CharacterListView.swift in Sources */,
 				923D788127B7B1BD00258518 /* Starships.swift in Sources */,
 				923D787F27B7B18700258518 /* CharacterDetailDataSource.swift in Sources */,
 				923D786127B7876400258518 /* SWApi.swift in Sources */,
+				92CBF06E27CC05AE0010973E /* CharacterListSearchView.swift in Sources */,
 				923D786427B787AB00258518 /* AppConst.swift in Sources */,
 				923D787127B78AE400258518 /* UIScreenExtensions.swift in Sources */,
 				923D786927B7886700258518 /* CharacterList.swift in Sources */,

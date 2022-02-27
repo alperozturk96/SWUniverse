@@ -35,7 +35,8 @@ struct CharacterStarshipView: View {
                     }
                 }
             }
-        } //: GROUPBOX
+        }
+        .padding(.horizontal, 15)
     }
 }
 

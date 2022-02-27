@@ -21,10 +21,7 @@ struct CharacterListContentView: View {
                     .foregroundColor(.red)
             }
         }
-        .preferredColorScheme(.dark)
-        .scaledToFit()
-        .contentShape(Rectangle()) // Shape of HStack
-        .padding(EdgeInsets(top: 17, leading: 21, bottom: 17, trailing: 21))
+        .modifier(Modifier())
     }
 }
 
@@ -35,5 +32,15 @@ struct PersonListContentView_Previews: PreviewProvider {
         }
         .environmentObject(Favorites())
        
+    }
+}
+
+fileprivate struct Modifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .preferredColorScheme(.dark)
+            .scaledToFit()
+            .contentShape(Rectangle()) // Shape of HStack
+            .padding(EdgeInsets(top: 17, leading: 21, bottom: 17, trailing: 21))
     }
 }

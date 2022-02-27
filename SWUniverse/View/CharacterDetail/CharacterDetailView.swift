@@ -28,7 +28,7 @@ struct CharacterDetailView: View {
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
-                  
+                        .padding(.bottom, 10)
                  
                     let url = imageFinder.findImageUrl(character.name)
                     AsyncImageView(url: url, width: UIScreen.width * 0.5, height: UIScreen.height * 0.35)
@@ -38,14 +38,12 @@ struct CharacterDetailView: View {
                         .frame(width: UIScreen.width, height: UIScreen.height * 0.4, alignment: .center)
                       
                     CharacterStarshipView(viewModel.starships)
-                } //: VSTACK
-                .padding(.horizontal, 20)
-                .padding(.top, 100)
-                .frame(maxWidth: 640, alignment: .center)
-            } //: VSTACK
-        } //: SCROLL
-        .preferredColorScheme(.dark)
-        .edgesIgnoringSafeArea(.top)
+                        .frame(width: UIScreen.width, alignment: .center)
+                } //: VStack
+                .modifier(VStackModifier())
+            } //: VStack
+        } //: ScrollView
+        .modifier(ScrollViewModifier())
         .toolbar {
             Button(action: {self.changeCharacterStatus()}) {
                 if favorites.isCharacterFavorite(character.name ?? "") {
@@ -66,7 +64,7 @@ struct CharacterDetailView: View {
         }
     }
     
-    func changeCharacterStatus(){
+    private func changeCharacterStatus(){
         if let name = character.name {
             if favorites.isCharacterFavorite(name) {
                 favorites.deleteFavoriteCharacter(name)
@@ -85,5 +83,23 @@ struct CharacterDetailView_Previews: PreviewProvider {
             CharacterDetailView(CharacterPreviewData.desann, [Character]())
         }
         .environmentObject(Favorites())
+    }
+}
+
+
+fileprivate struct VStackModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, 20)
+            .padding(.top, 100)
+            .frame(maxWidth: UIScreen.width, alignment: .center)
+    }
+}
+
+fileprivate struct ScrollViewModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .preferredColorScheme(.dark)
+            .edgesIgnoringSafeArea(.top)
     }
 }
