@@ -16,7 +16,7 @@ struct CharacterListContentView: View {
             Text(character.name ?? "")
                 .font(.body)
             
-            if favorites.isCharacterFavorite(character.name ?? "") {
+            if favorites.isFavorite(character.name ?? "") {
                 Image(systemName: "heart.fill")
                     .foregroundColor(.red)
             }

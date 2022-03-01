@@ -14,6 +14,7 @@ import Combine
 import SwiftUI
 
 final class CharacterListViewModel: ObservableObject {
+    @Published var favorities = Favorites()
     
     @Published var characterList = [Character]()
     var untouchedCharacterList = [Character]()

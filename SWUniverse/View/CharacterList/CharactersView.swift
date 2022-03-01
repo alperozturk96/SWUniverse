@@ -15,17 +15,19 @@ struct CharactersView: View {
         self.characterList = characterList
         self.untouchedCharacterList = untouchedCharacterList
     }
-    
+
+    /**
+     You can use ForEach inside List to have both dynamic and static content – a very powerful feature of SwiftUI.
+     */
     var body: some View {
         if let characterList = characterList {
-            List {
-              ForEach(characterList) { item in
-                  NavigationLink(destination:CharacterDetailView(item, untouchedCharacterList))
-                  {
-                      CharacterListContentView(character: item)
-                  }
-              }
-            }
+            List(characterList) { item in
+                let destination = CharacterDetailView(item, untouchedCharacterList)
+                NavigationLink(destination: destination)
+                {
+                    CharacterListContentView(character: item)
+                }
+            }// List
         }
         else
         {

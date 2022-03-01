@@ -8,7 +8,7 @@
 import Combine
 
 final class CharacterDetailViewModel: ObservableObject {
-    
+
     @Published var starships = [Starships]()
     var dataSource = CharacterDetailDataSource(cancellables: Set<AnyCancellable>())
     

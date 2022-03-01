@@ -29,23 +29,23 @@ final class Favorites: ObservableObject {
         }
     }
     
-    func isCharacterFavorite(_ name:String) -> Bool {
+    func isFavorite(_ name:String) -> Bool {
         return favorites.contains(name)
     }
     
-    func addFavoriteCharacter(_ name:String){
+    func add(_ name:String){
         objectWillChange.send()
         favorites.insert(name)
-        saveFavoriteCharacters()
+        save()
     }
     
-    func deleteFavoriteCharacter(_ name:String){
+    func delete(_ name:String){
         objectWillChange.send()
         favorites.remove(name)
-        saveFavoriteCharacters()
+        save()
     }
     
-    func saveFavoriteCharacters(){
+    func save(){
         let encoder = JSONEncoder()
         
         if let encoded = try? encoder.encode(favorites) {

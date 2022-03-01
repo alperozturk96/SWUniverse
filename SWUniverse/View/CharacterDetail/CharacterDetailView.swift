@@ -22,58 +22,46 @@ struct CharacterDetailView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .center, spacing: 20) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(character.name ?? "")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 10)
-                 
-                    let url = imageFinder.findImageUrl(character.name)
-                    AsyncImageView(url: url, width: UIScreen.width * 0.5, height: UIScreen.height * 0.35)
-                    
-                    let properties = viewModel.getCharacterProperties(character)
-                    CharacterPropertiesView(properties)
-                        .frame(width: UIScreen.width, height: UIScreen.height * 0.4, alignment: .center)
-                      
-                    CharacterStarshipView(viewModel.starships)
-                        .frame(width: UIScreen.width, alignment: .center)
-                } //: VStack
-                .modifier(VStackModifier())
+            VStack(alignment: .leading, spacing: 5) {
+                Text(character.name ?? "")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 10)
+                    .padding(.leading, 20)
+
+                let url = imageFinder.findImageUrl(character.name)
+                AsyncImageView(url: url, width: UIScreen.width * 0.5, height: UIScreen.height * 0.35)
+                    .padding(.leading, 20)
+
+                let properties = viewModel.getCharacterProperties(character)
+                CharacterPropertiesView(properties)
+                    .frame(width: UIScreen.width, height: UIScreen.height * 0.4, alignment: .center)
+
+                CharacterStarshipView(viewModel.starships)
+                    .frame(width: UIScreen.width, alignment: .center)
             } //: VStack
+            .modifier(VStackModifier())
         } //: ScrollView
         .modifier(ScrollViewModifier())
         .toolbar {
             Button(action: {self.changeCharacterStatus()}) {
-                if favorites.isCharacterFavorite(character.name ?? "") {
-                    Image(systemName: "heart.fill")
-                        .foregroundColor(.red)
-                }
-                else
-                {
-                    Image(systemName: "heart.fill")
-                        .foregroundColor(.white)
-                }
+                let isFavorite = favorites.isFavorite(character.name ?? "")
+                FavoriteView( isFavorite)
             }
         }
         .onAppear {
-            if let starships = character.starships {
-                viewModel.getStarshipList(urls: starships)
+            guard let starships = character.starships else {
+                return
             }
+
+            viewModel.getStarshipList(urls: starships)
         }
     }
     
     private func changeCharacterStatus(){
-        if let name = character.name {
-            if favorites.isCharacterFavorite(name) {
-                favorites.deleteFavoriteCharacter(name)
-            }
-            else
-            {
-                favorites.addFavoriteCharacter(name)
-            }
-        }
+        guard let name = character.name else { return }
+        favorites.isFavorite(name) ? favorites.delete(name): favorites.add(name)
     }
 }
 

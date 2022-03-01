@@ -10,21 +10,20 @@ import Combine
 
 struct CharacterListView: View {
     @StateObject private var viewModel = CharacterListViewModel()
-    @StateObject private var favorites = Favorites()
     
     var body: some View {
         NavigationView{
             VStack(alignment: .center){
-                CharacterListSearchView.init { text in
+                SearchView(debounceTime: 2) { text in
                     viewModel.searchCharacter(search: text)
                 }
-                
+
                 CharactersView(viewModel.characterList, viewModel.untouchedCharacterList)
             }//VStack
             .hiddenNavigationBarStyle()
         }//NavigationView
         .modifier(Modifier())
-        .environmentObject(favorites)
+        .environmentObject(viewModel.favorities)
         .onAppear {
             viewModel.getCharacterList()
         }
